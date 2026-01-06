@@ -1,67 +1,29 @@
-public class Doctor {
+public class Doctor extends Person {
+    protected String specialization;
+    protected int experienceYears;
 
-    private int doctorId;
-    private String name;
-    private String specialization;
-    private int experienceYears;
-
-    public Doctor(int doctorId, String name, String specialization, int experienceYears) {
-        this.doctorId = doctorId;
-        this.name = name;
+    public Doctor(int id, String name, String specialization, int experienceYears) {
+        super(id, name, 0, "N/A");
         this.specialization = specialization;
         this.experienceYears = experienceYears;
     }
 
     public Doctor() {
-        this.doctorId = 0;
-        this.name = "Unknown";
+        super();
         this.specialization = "General";
         this.experienceYears = 0;
     }
-    public int getDoctorId() {
-        return doctorId;
+
+    @Override
+    public void displayInfo() {
+        System.out.println("Doctor: " + name + ", Specialization: " + specialization + ", Experience: " + experienceYears + " years");
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public int getExperienceYears() {
-        return experienceYears;
-    }
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
-
-    public void setExperienceYears(int experienceYears) {
-        this.experienceYears = experienceYears;
-    }
     public boolean isExperienced() {
         return experienceYears >= 5;
     }
+
     public boolean canPerformSurgery() {
         return experienceYears >= 3;
     }
-
-    @Override
-    public String toString() {
-        return "Doctor{id=" + doctorId +
-                ", name='" + name + '\'' +
-                ", specialization='" + specialization + '\'' +
-                ", experienceYears=" + experienceYears +
-                '}';
-    }
 }
-
