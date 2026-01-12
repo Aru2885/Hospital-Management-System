@@ -13,11 +13,7 @@ public class Patient extends Person {
         System.out.println("Patient: " + name + ", Age: " + age + ", Blood Type: " + bloodType);
     }
 
-    public boolean isMinor() {
-        return age < 18;
-    }
-
     public String getAgeGroup() {
-        return (age < 18) ? "Child" : "Adult";
+        return isMinor() ? "Child" : "Adult";
     }
 }

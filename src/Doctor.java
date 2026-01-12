@@ -1,11 +1,12 @@
 public class Doctor extends Person {
-    protected String specialization;
-    protected int experienceYears;
+
+    private String specialization;
+    private int experienceYears;
 
     public Doctor(int id, String name, String specialization, int experienceYears) {
         super(id, name, 0, "N/A");
-        this.specialization = specialization;
-        this.experienceYears = experienceYears;
+        setSpecialization(specialization);
+        setExperienceYears(experienceYears);
     }
 
     public Doctor() {
@@ -14,9 +15,24 @@ public class Doctor extends Person {
         this.experienceYears = 0;
     }
 
-    @Override
-    public void displayInfo() {
-        System.out.println("Doctor: " + name + ", Specialization: " + specialization + ", Experience: " + experienceYears + " years");
+    public int getExperienceYears() {
+        return experienceYears;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setExperienceYears(int experienceYears) {
+        if (experienceYears >= 0) {
+            this.experienceYears = experienceYears;
+        }
+    }
+
+    public void setSpecialization(String specialization) {
+        if (specialization != null && !specialization.isEmpty()) {
+            this.specialization = specialization;
+        }
     }
 
     public boolean isExperienced() {
@@ -26,4 +42,10 @@ public class Doctor extends Person {
     public boolean canPerformSurgery() {
         return experienceYears >= 3;
     }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("Doctor: " + name + ", Specialization: " + specialization + ", Experience: " + experienceYears + " years");
+    }
 }
+
