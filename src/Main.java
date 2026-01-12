@@ -4,6 +4,10 @@ public class Main {
     private static final ArrayList<Person> people = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+        people.add(new Patient(1, "Aruzhan Rsaliyeva", 19, "A+"));
+        people.add(new Patient());
+        people.add(new Doctor(101, "Dr. Smith", "Therapist", 6));
+        people.add(new Doctor());
         int choice;
         do {
             showMenu();
@@ -74,11 +78,28 @@ public class Main {
         }
     }
     private static void demonstratePolymorphism() {
-        System.out.println("\n--- POLYMORPHISM DEMONSTRATION ---");
+        System.out.println("\n=== POLYMORPHISM DEMONSTRATION ===");
+        if (people.isEmpty()) {
+            System.out.println("No people found.");
+            return;
+        }
+
         for (Person p : people) {
             p.displayInfo();
+            if (p instanceof Patient pat) {
+                if (pat.isMinor()) {
+                    System.out.println("This patient is a minor.");
+                }
+            } else if (p instanceof Doctor doc) {
+                System.out.println("Specialization: " + doc.getSpecialization());
+                System.out.println("Experience Years: " + doc.getExperienceYears());
+                if (doc.isExperienced()) {
+                    System.out.println("This doctor is experienced.");
+                }
+            }
+
+            System.out.println("---------------------------------"); // separator for clarity
         }
-        System.out.println("Same method call, different behavior.");
     }
     private static void viewDoctorsOnly() {
         System.out.println("\n--- DOCTORS ONLY ---");
