@@ -19,8 +19,21 @@ public abstract class Person {
         this.age = 0;
         this.bloodType = "Unknown";
     }
-    public abstract String getRole();
+    public int getId() {
+        return id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
     public void setId(int id) {
         if (id <= 0) {
             throw new IllegalArgumentException("ID must be positive");
@@ -48,6 +61,8 @@ public abstract class Person {
         }
         this.bloodType = bloodType;
     }
+
+    public abstract String getRole();
 
     public boolean isMinor() {
         return age < 18;

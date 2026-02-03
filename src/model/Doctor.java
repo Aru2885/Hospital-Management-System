@@ -1,4 +1,5 @@
 package model;
+
 public class Doctor extends Person implements Treatable {
     private String specialization;
     private int experienceYears;
@@ -22,9 +23,8 @@ public class Doctor extends Person implements Treatable {
 
     @Override
     public void treatPatient() {
-        System.out.println("Doctor " + name + " is treating a patient.");
+        System.out.println("Doctor " + getName() + " is treating a patient.");
     }
-
     public void setExperienceYears(int experienceYears) {
         if (experienceYears < 0) {
             throw new IllegalArgumentException("Experience cannot be negative");
@@ -38,6 +38,13 @@ public class Doctor extends Person implements Treatable {
         }
         this.specialization = specialization;
     }
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public int getExperienceYears() {
+        return experienceYears;
+    }
 
     public boolean isExperienced() {
         return experienceYears >= 5;
@@ -45,7 +52,7 @@ public class Doctor extends Person implements Treatable {
 
     @Override
     public void displayInfo() {
-        System.out.println("Doctor: " + name +
+        System.out.println("Doctor: " + getName() +
                 ", Specialization: " + specialization +
                 ", Experience: " + experienceYears + " years");
     }
